@@ -7,8 +7,17 @@
     * Faiss        : 1.6.5
 * II.
 
+## How to install
+```
+git clone https://github.com/dczifra/tsne.git
+git submodule update --init --recursive
+```
 
-Test install:
+
+
+# Documentation
+
+## Test install CandyLab/t-SNE [OLD]:
 ```
 ./docker/build.sh
 ./docker/run.sh
@@ -25,12 +34,11 @@ python -c "import tsnecuda;tsnecuda.test()"
 ```
 
 
-# Install
+## Unseful links for install
 * [Reference doc](https://github.com/CannyLab/tsne-cuda/blob/main/INSTALL.md)
 * [FAISS](https://github.com/facebookresearch/faiss/blob/main/INSTALL.md)
     * Recommended to install with `conda`
     * Possible to install from source
-
 * [Conda](https://mjtdev.medium.com/how-to-conda-miniconda-anaconda-in-docker-in-2022-5579cafc44fd)
 
 From source template:

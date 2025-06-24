@@ -28,5 +28,10 @@ RUN conda init bash
 RUN conda install python=3.8
 RUN conda install -c pytorch -c nvidia faiss-gpu=1.6.5
 
+# === Install pip packages for tests ===
+RUN pip install scikit-learn torchvision matplotlib pandas tqdm seaborn scikit-image
+
+# === Install CandyLab's t-SNE ===
+# TODO later...
 
 WORKDIR /workspace
