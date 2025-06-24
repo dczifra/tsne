@@ -1,0 +1,3 @@
+[submodule "tsne-cuda"]
+	path = tsne-cuda
+	url = https://github.com/CannyLab/tsne-cuda.git
