@@ -33,7 +33,8 @@ if __name__ == "__main__":
     Y = mnist_train_labels.numpy()[:args.N]
 
     if args.mode == 'sklearn':
-        tsne = sklearn.manifold.TSNE(n_components=2, perplexity=15, learning_rate=10)
+        from sklearn.manifold._t_sne import TSNE
+        tsne = TSNE(n_components=2, perplexity=15, learning_rate=10)
         X_embedded = tsne.fit_transform(X.numpy())
     elif args.mode == 'cannylab':
         from tsnecuda import TSNE
