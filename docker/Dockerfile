@@ -1,10 +1,5 @@
 FROM nvidia/cuda:11.3.1-devel-ubuntu20.04
 
-# === Refresh apt source for python3.10 ===
-#RUN apt -qq update && \
-#    DEBIAN_FRONTEND=noninteractive apt install software-properties-common -y && \
-#    add-apt-repository ppa:deadsnakes/ppa
-
 # === Install ap packages ===
 RUN apt -qq update && \
     DEBIAN_FRONTEND=noninteractive apt -qq install build-essential libopenblas-dev libgtest-dev libgflags-dev \
@@ -30,9 +25,12 @@ RUN conda install -c pytorch -c nvidia faiss-gpu=1.6.5
 
 # === Install pip packages for tests ===
 RUN pip install scikit-learn torchvision matplotlib pandas tqdm seaborn
-#RUN pip install scikit-learn==1.7.0
 
-# === Install CandyLab's t-SNE ===
-# TODO later...
+# === Install CannyLab's t-SNE ===
+# COPY tsne-cuda /workspace/tsne-cuda
+# RUN cd /workspace/tsne-cuda && \
+#     mkdir build && cd build && \
+#     cmake .. && make -j16 && \
+#     cd python && pip install .
 
 WORKDIR /workspace

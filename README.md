@@ -10,14 +10,18 @@
 ## How to install
 ```
 git clone https://github.com/dczifra/tsne.git
+cd tsne
 git submodule update --init --recursive
+./docker/build.sh
+./docker/run.sh
+./install_tsne.sh
 ```
 
 
 
 # Documentation
 
-## Test install CandyLab/t-SNE [OLD]:
+## Test install CannyLab/t-SNE [OLD]:
 ```
 ./docker/build.sh
 ./docker/run.sh
