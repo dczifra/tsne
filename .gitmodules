@@ -4,3 +4,6 @@
 [submodule "faiss"]
 	path = faiss
 	url = https://github.com/facebookresearch/faiss.git
+[submodule "src/external/-f"]
+	path = src/external/-f
+	url = https://github.com/dczifra/tsne-cuda.git
