@@ -3,7 +3,33 @@ import numpy as np
 import tsnecuda
 from tsnecuda import TSNE
 
+# Import memory profiler
+from memory_profiler import profile
 
+
+@profile
+def TSNE_knn_test(N, M, data):
+    r = TSNE(verbose=1).fit_transform(data)
+    print('tsne cuda result', r)
+
+@profile
+def faiss_knn_test(N, M, data):
+    import faiss
+    res = faiss.StandardGpuResources()  # use a single GPU
+
+    ## Using a flat index
+    index_flat = faiss.IndexFlatL2(M)
+
+    # make it a flat GPU index
+    gpu_index_flat = faiss.index_cpu_to_gpu(res, 0, index_flat)
+    gpu_index_flat.add(data)         # add vectors to the index
+    print("ntotal:", gpu_index_flat.ntotal)
+
+    k = 32                          # we want to see 4 nearest neighbors
+    D, I = gpu_index_flat.search(data, k)  # actual search
+    #print(I[:5])                   # neighbors of the 5 first queries
+    #print(I[-5:])                  # neighbors of the 5 last queries
+    print("D/I shape", D.shape, I.shape)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Random Data t-SNE with tsnecuda')
@@ -13,5 +39,10 @@ if __name__ == "__main__":
 
 
     data = np.random.rand(args.N, args.M).astype(np.float32)
-    r = TSNE(verbose=1).fit_transform(data)
-    print('tsne cuda result', r)
+
+
+    # === Run faiss KNN Test ===
+    #faiss_knn_test(args.N, args.M, data)
+
+    # === Run t-SNE KNN Test ===
+    TSNE_knn_test(args.N, args.M, data)
