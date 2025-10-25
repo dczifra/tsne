@@ -8,8 +8,8 @@ from memory_profiler import profile
 
 
 @profile
-def TSNE_knn_test(N, M, data):
-    r = TSNE(verbose=1).fit_transform(data)
+def TSNE_knn_test(N, M, data, batch_size):
+    r = TSNE(verbose=1, batch_size=batch_size).fit_transform(data)
     print('tsne cuda result', r)
 
 @profile
@@ -35,6 +35,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Random Data t-SNE with tsnecuda')
     parser.add_argument('--N', type=int, default=1000000, help='Number of random samples to generate')
     parser.add_argument('--M', type=int, default=10, help='Dimensionality of each sample')
+    parser.add_argument('--batch_size', type=int, default=8196, help='Batch size for t-SNE (0 for full batch)')
     args = parser.parse_args()
 
 
@@ -45,4 +46,4 @@ if __name__ == "__main__":
     #faiss_knn_test(args.N, args.M, data)
 
     # === Run t-SNE KNN Test ===
-    TSNE_knn_test(args.N, args.M, data)
+    TSNE_knn_test(args.N, args.M, data, args.batch_size)
