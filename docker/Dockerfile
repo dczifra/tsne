@@ -33,7 +33,7 @@ RUN conda install -c pytorch -c nvidia faiss-gpu=1.9.0
 
 
 # === Install pip packages for tests ===
-RUN pip install scikit-learn torchvision matplotlib pandas tqdm seaborn
+RUN pip install scikit-learn torchvision matplotlib pandas tqdm seaborn memory_profiler
 
 # === Install CannyLab's t-SNE ===
 # COPY tsne-cuda /workspace/tsne-cuda
