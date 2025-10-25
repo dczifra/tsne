@@ -1,6 +1,6 @@
 [submodule "faiss"]
 	path = faiss
 	url = https://github.com/facebookresearch/faiss.git
-[submodule "src/external/-f"]
-	path = src/external/-f
+[submodule "src/external/tsne-cuda"]
+	path = src/external/tsne-cuda
 	url = https://github.com/dczifra/tsne-cuda.git

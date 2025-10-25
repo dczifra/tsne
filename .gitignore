@@ -2,3 +2,4 @@ data
 *.png
 .vscode
 src/cpp/build
+src/external/tsne-cuda/build
