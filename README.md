@@ -6,6 +6,9 @@
     * Python(Conda): 3.8
     * Faiss        : 1.6.5
 * II.
+    * CUDA         : 12.4
+    * Python(Conda): 3.11
+    * Faiss        : 1.7.4 (--> 1.9.0)
 
 ## How to install
 ```
