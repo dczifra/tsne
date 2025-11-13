@@ -6,3 +6,5 @@ cmake ..
 make -j16
 cd python
 pip install -e .
+cd ../../../FlowCytometryTools
+pip install -e .
