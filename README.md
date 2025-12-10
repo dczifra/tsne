@@ -19,6 +19,7 @@ git submodule update --init --recursive
 ```
 
 II./a Build and run docker container (Inside docker tsne is already installed)
+* Use `--ubuntu` flag for the `nvidia/cuda:12.4.1-devel-ubuntu22.04` based image, else `amazonlinux:2023` will be the base image.
 ```
 ./docker/build.sh
 ./docker/run.sh
