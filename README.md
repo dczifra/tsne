@@ -11,35 +11,33 @@
     * Faiss        : 1.7.4 (--> 1.9.0)
 
 ## How to install
+I. Clone and init submodules
 ```
 git clone https://github.com/dczifra/tsne.git
 cd tsne
 git submodule update --init --recursive
+```
+
+II./a Build and run docker container (Inside docker tsne is already installed)
+```
 ./docker/build.sh
 ./docker/run.sh
+```
+
+II./b Use conda
+```
+conda install -c pytorch -c nvidia faiss-gpu=1.9.0
+conda install scikit-learn torchvision matplotlib pandas tqdm seaborn memory_profiler
 ./install_tsne.sh
 ```
 
+III. Test
+```
+python src/random_test.py
+```
 
 
 # Documentation
-
-## Test install CannyLab/t-SNE [OLD]:
-```
-./docker/build.sh
-./docker/run.sh
-cd tsne-cuda
-git submodule init
-git submodule update
-mkdir build
-cd build
-cmake ..
-make -j16
-cd python
-pip install -e .
-python -c "import tsnecuda;tsnecuda.test()"
-```
-
 
 ## Unseful links for install
 * [Reference doc](https://github.com/CannyLab/tsne-cuda/blob/main/INSTALL.md)
@@ -47,12 +45,3 @@ python -c "import tsnecuda;tsnecuda.test()"
     * Recommended to install with `conda`
     * Possible to install from source
 * [Conda](https://mjtdev.medium.com/how-to-conda-miniconda-anaconda-in-docker-in-2022-5579cafc44fd)
-
-From source template:
-```
-RUN mkdir -p ${OPTIX_INSTALL_PATH}
-WORKDIR ${OPTIX_INSTALL_PATH}
-RUN cmake \
-    -DCMAKE_LIBRARY_PATH=/usr/local/cuda/lib64/stubs \
-    /src/optixlib && make -j8
-```
