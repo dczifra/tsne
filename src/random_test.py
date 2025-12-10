@@ -4,15 +4,15 @@ import tsnecuda
 from tsnecuda import TSNE
 
 # Import memory profiler
-from memory_profiler import profile
+#from memory_profiler import profile
 
 
-@profile
+#@profile
 def TSNE_knn_test(N, M, data, batch_size):
     r = TSNE(verbose=1, batch_size=batch_size).fit_transform(data)
     print('tsne cuda result', r)
 
-@profile
+#@profile
 def faiss_knn_test(N, M, data):
     import faiss
     res = faiss.StandardGpuResources()  # use a single GPU
