@@ -3,6 +3,8 @@
 
 if [ "$1" == "--ubuntu" ]; then
     OS_FLAG="ubuntu:22.04"
+elif [ "$1" == "--al23" ]; then
+    OS_FLAG="tsnecuda_al23"
 else
     OS_FLAG="amazonlinux:2023"
 fi
