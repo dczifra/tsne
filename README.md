@@ -46,3 +46,14 @@ python src/random_test.py
     * Recommended to install with `conda`
     * Possible to install from source
 * [Conda](https://mjtdev.medium.com/how-to-conda-miniconda-anaconda-in-docker-in-2022-5579cafc44fd)
+
+
+
+
+# Notes
+
+## Open questions:
+* What exactly affects whether it goes into batch mode or not?
+* (seems to be that nearest_neighbors variable, but how is that changing if we are always leaving it at default of 32)
+* What is the current limit of data size, in your version where you made the FAISS fix ?
+* We want to understand if batch mode affects the results or not (but we’re pretty sure it does not, since old tsne-cuda was using batch mode)
