@@ -18,6 +18,7 @@ fi
 
 docker run \
     --rm $GPU_FLAG \
+    --privileged \
     --runtime=nvidia \
     --mount type=bind,source="$(pwd)",target=/workspace \
     -it "doma945/nvidia_$OS_FLAG" bash
